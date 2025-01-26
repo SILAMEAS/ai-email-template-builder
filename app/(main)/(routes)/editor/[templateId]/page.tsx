@@ -1,7 +1,7 @@
 import React from 'react';
 import EditorHeader from "@/components/custom/EditorHeader";
 import ElementSideBar from "@/components/custom/editor/left-side/ElementSideBar";
-import Canvas from "@/components/custom/editor/Canvas";
+import Canvas from "@/components/custom/editor/canvas/Canvas";
 import Setting from "@/components/custom/editor/right-side/Setting";
 
 const Editor = () => {

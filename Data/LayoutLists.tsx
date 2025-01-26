@@ -1,6 +1,14 @@
-import {Columns2, Columns3, Columns4, RectangleHorizontal} from "lucide-react";
+import {Columns2, Columns3, Columns4, LucideProps, RectangleHorizontal} from "lucide-react";
+import {ForwardRefExoticComponent, RefAttributes} from "react";
 
-export default [
+export interface LayoutListsInterface{
+    label:string,
+    type:string,
+    numOfCol:number,
+    icon:ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>
+}
+const LayoutLists:Array<LayoutListsInterface>=[
+
     {
         label:"1 Column",
         type:"column-1",
@@ -26,3 +34,5 @@ export default [
         icon:Columns4
     }
 ]
+
+export default LayoutLists

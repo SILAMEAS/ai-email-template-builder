@@ -1,17 +1,21 @@
+"use client"
 import React from 'react';
 import Image from "next/image";
 import {Button} from "@/components/ui/button";
 import {Code, Monitor, Smartphone} from "lucide-react";
+import {useScreenSize} from "@/context/hooks/useScreenSize";
+import {Screen} from "@/constants/Screen";
 
 const EditorHeader = () => {
+    const {screenSize,setScreenSize}=useScreenSize();
     return (
         <div className={'p-4 shadow-sm flex justify-between items-center'}>
             <Image src={"/logo.png"} alt={"logo"} width={160} height={200}/>
             <div>
-            <Button variant={'ghost'}>
+            <Button variant={'ghost'} onClick={()=>{setScreenSize(Screen.DeskTop)}} className={`${screenSize===Screen.DeskTop&&'bg-purple-100 text-primary'}`}>
                 <Monitor/> Desktop
             </Button >
-                <Button variant={'ghost'}>
+                <Button variant={'ghost'} onClick={()=>{setScreenSize(Screen.Mobile)}} className={`${screenSize===Screen.Mobile&&'bg-purple-100 text-primary'}`}>
                     <Smartphone/> Mobile
                 </Button>
             </div>

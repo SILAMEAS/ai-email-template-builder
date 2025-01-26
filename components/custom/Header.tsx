@@ -8,7 +8,7 @@ import {Route} from "@/constants/Route";
 import {useUserDetail} from "@/context/hooks/useUserDetail";
 
 const Header = () => {
-    const {userDetail,setUserDetail}=useUserDetail();
+    const {userDetail}=useUserDetail();
     return (
         <div className={'flex justify-between items-center py-4 px-10 shadow-sm'}>
            <Image src={"/logo.png"} alt={"logo"} width={130} height={100}/>
