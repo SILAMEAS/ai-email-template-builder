@@ -1,8 +1,10 @@
 import {useContext} from 'react';
 import {UserDetailContext} from "@/context/UserDetailContext";
 
-const useUserDetail = () => {
+const useUserDetailContext = () => {
     return useContext(UserDetailContext);
 };
-
-export default useUserDetail;
+export const useUserDetail= () => {
+    const {userDetail,setUserDetail}=useUserDetailContext();
+  return {userDetail,setUserDetail}
+};

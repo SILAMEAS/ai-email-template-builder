@@ -1,10 +1,10 @@
-import Header from "@/components/custom/Header";
 import Hero from "@/components/custom/Hero";
+import Header from "@/components/custom/Header";
 
 export default function Home() {
   return (
     <div>
-    <Header/>
+        <Header/>
       <Hero/>
     </div>
   );
