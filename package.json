@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 5000",
     "dev-convex": "convex dev",
     "build": "next build",
     "start": "next start",
@@ -17,14 +17,14 @@
     "clsx": "^2.1.1",
     "convex": "^1.18.2",
     "lucide-react": "^0.474.0",
-    "next": "15.1.6",
+    "next": "14.2.6",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^18.15.3",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "postcss": "^8",

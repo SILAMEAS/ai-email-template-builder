@@ -32,3 +32,12 @@ pnpm dev-convex
 # or
 bun dev-convex
 ```
+
+
+```Tool
+- Next
+- Convex
+- React-oauth/google
+```
+
+
