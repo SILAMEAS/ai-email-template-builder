@@ -4,8 +4,10 @@ import ElementLists from "@/Data/ElementLists";
 import {useDragDropLayoutElement} from "@/context/hooks/useDragDropLayoutElement";
 import {EnumScreen} from "@/constants/EnumScreen";
 import {useScreenSize} from "@/context/hooks/useScreenSize";
+import {useSelectedSetting} from "@/context/hooks/useSelectedSetting";
 
 const ElementListCards = () => {
+  const {selectedSetting,setSelectedSetting}=useSelectedSetting();
   const { setDragElementLayout } = useDragDropLayoutElement();
   const {screenSize}=useScreenSize();
   const onDragElementStart = ({ element }: { element: any }) => {
@@ -24,10 +26,14 @@ const ElementListCards = () => {
           <div
             key={index}
             className={
-              "flex justify-center items-center flex-col border border-dashed rounded-xl p-3 group hover:shadow-md hover:border-primary cursor-pointer"
-            }
+          `flex justify-center items-center flex-col border border-dashed rounded-xl p-3 group hover:shadow-md hover:border-primary cursor-pointer`
+          }
             draggable
             onDragStart={() => onDragElementStart({ element })}
+            // onClick={()=>{
+            //   console.log('layout',element,index)
+            //   setSelectedSetting({element:element,index:index})
+            // }}
           >
             <div>
               {

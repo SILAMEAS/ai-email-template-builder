@@ -114,7 +114,7 @@ export default [
     icon: PanelTop,
     type: PropertyConstants.logo_header,
     label: "Logo Header",
-    imageUrl: "/logo.svg",
+    imageUrl: "/logo.png",
     alt: "logo",
     url: "#",
     style: {

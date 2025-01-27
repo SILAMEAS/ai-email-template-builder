@@ -6,6 +6,7 @@ const useEffectRedirectAfterLogin = () => {
   const [screenSize, setScreenSize] = useState<any>();
   const [dragElementLayout, setDragElementLayout] = useState<any>();
   const [emailTemplate, setEmailTemplate] = useState<any>([]);
+  const [selectedSetting, setSelectedSetting] = useState<any>();
   useEffect(() => {
     if (typeof window !== undefined) {
       const storage = JSON.parse(localStorage.getItem("userDetail") as any);
@@ -29,13 +30,15 @@ const useEffectRedirectAfterLogin = () => {
   }, [emailTemplate]);
   return {
     userDetail,
-    setUserDetail,
     screenSize,
-    setScreenSize,
     dragElementLayout,
-    setDragElementLayout,
     emailTemplate,
+    selectedSetting,
     setEmailTemplate,
+    setSelectedSetting,
+    setDragElementLayout,
+    setUserDetail,
+    setScreenSize
   };
 };
 

@@ -1,13 +1,16 @@
-import React, { useState } from "react";
-import { useEmailTemplate } from "@/context/hooks/useEmailTemplate";
-import { useDragDropLayoutElement } from "@/context/hooks/useDragDropLayoutElement";
-import { getElementComponent } from "@/components/custom/editor/left-side/functions/getElementComponent";
-import { ElementListInterface } from "@/Data/ElementLists";
+"use client"
+import React, {useState} from "react";
+import {useEmailTemplate} from "@/context/hooks/useEmailTemplate";
+import {useDragDropLayoutElement} from "@/context/hooks/useDragDropLayoutElement";
+import {getElementComponent} from "@/components/custom/editor/left-side/functions/getElementComponent";
+import {ElementListInterface} from "@/Data/ElementLists";
+import {useSelectedSetting} from "@/context/hooks/useSelectedSetting";
 
 interface ColumnLayoutInterface {
   layout: any;
 }
 const ColumnLayout = ({ layout }: ColumnLayoutInterface) => {
+    const {selectedSetting, setSelectedSetting}=useSelectedSetting();
   const { setEmailTemplate } = useEmailTemplate();
   const { dragElementLayout } = useDragDropLayoutElement();
   const [dragOver, setDragOver] = useState<
@@ -35,6 +38,7 @@ const ColumnLayout = ({ layout }: ColumnLayoutInterface) => {
     );
     setDragOver(undefined);
   };
+    // ${selectedSetting?.index===index&&'border-blue-500'}
   return (
     <div>
       <div
@@ -45,16 +49,25 @@ const ColumnLayout = ({ layout }: ColumnLayoutInterface) => {
         }}
       >
         {Array.from({ length: layout.numOfCol }).map((_, index) => {
+            console.log(selectedSetting?.layout?.id,layout?.id)
           return (
             <div
               key={index}
-              className={`p-2 flex items-center ${!layout?.[index]?.type && "bg-gray-100 border border-dashed"} justify-center ${index === dragOver?.index && dragOver?.columId && "bg-green-100"}`}
+              onClick={()=>{
+                  console.log('layout',layout?.id)
+                  setSelectedSetting({layout:layout,index:index})
+              }}
+              className={`p-2 flex items-center 
+              ${!layout?.[index]?.type && "bg-gray-100 border border-dashed"} justify-center 
+              ${index === dragOver?.index && dragOver?.columId && "bg-green-100"} cursor-pointer
+              ${(selectedSetting?.layout?.id===layout?.id&& selectedSetting?.index===index)&&'border-2 border-blue-500 p-10'}`}
               onDragOver={(event) => onDragOverHandle(event, index)}
               onDrop={onDropHandle}
+
             >
-              {getElementComponent(layout?.[index] as ElementListInterface) ?? (
-                <h2>Drag Element here</h2>
-              )}
+                {getElementComponent(layout?.[index] as ElementListInterface) ?? (
+                    <h2>Drag Element here</h2>
+                )}
             </div>
           );
         })}
