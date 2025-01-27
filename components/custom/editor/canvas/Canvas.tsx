@@ -1,14 +1,12 @@
 "use client";
-import React, { useState } from "react";
-import { useScreenSize } from "@/context/hooks/useScreenSize";
-import { Screen } from "@/constants/Screen";
-import { useDragDropLayoutElement } from "@/context/hooks/useDragDropLayoutElement";
-import { useEmailTemplate } from "@/context/hooks/useEmailTemplate";
-import { getLayoutComponent } from "@/components/custom/editor/left-side/functions/getLayoutComponent";
+import React, {useState} from "react";
+import {useDragDropLayoutElement} from "@/context/hooks/useDragDropLayoutElement";
+import {useEmailTemplate} from "@/context/hooks/useEmailTemplate";
+import {getLayoutComponent} from "@/components/custom/editor/left-side/functions/getLayoutComponent";
+import {ResponsiveCanvas} from "@/utils/common/responsive/ResponsiveCanvas";
 
 const Canvas = () => {
   const [dragOver, setDragOver] = useState<boolean>(false);
-  const { screenSize } = useScreenSize();
   const { dragElementLayout } = useDragDropLayoutElement();
   const { emailTemplate, setEmailTemplate } = useEmailTemplate();
   const onDragOver = (e: any) => {
@@ -24,7 +22,7 @@ const Canvas = () => {
   return (
     <div className={"flex justify-center mt-20"}>
       <div
-        className={` p-6 w-full ${screenSize === Screen.DeskTop ? "max-w-4xl" : "max-w-2xl"} ${dragOver ? "bg-purple-100 p-4" : "bg-white"}`}
+        className={` p-6 w-full ${ResponsiveCanvas()} ${dragOver ? "bg-purple-100 p-4" : "bg-white"}`}
         onDragOver={onDragOver}
         onDrop={onDropHandle}
       >

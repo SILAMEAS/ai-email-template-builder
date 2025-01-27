@@ -1,10 +1,13 @@
 "use client";
 import React from "react";
-import Layout, { LayoutListsInterface } from "@/Data/LayoutLists";
-import { useDragDropLayoutElement } from "@/context/hooks/useDragDropLayoutElement";
+import Layout, {LayoutListsInterface} from "@/Data/LayoutLists";
+import {useDragDropLayoutElement} from "@/context/hooks/useDragDropLayoutElement";
+import {EnumScreen} from "@/constants/EnumScreen";
+import {useScreenSize} from "@/context/hooks/useScreenSize";
 
 const LayoutListCards = () => {
   const { setDragElementLayout } = useDragDropLayoutElement();
+  const {screenSize}=useScreenSize();
   const onDragLayoutStart = ({ layout }: { layout: LayoutListsInterface }) => {
     setDragElementLayout({
       dragLayout: {
@@ -33,9 +36,13 @@ const LayoutListCards = () => {
                 />
               }
             </div>
-            <h2 className={"text-sm group-hover:text-primary"}>
-              {layout.label}
-            </h2>
+              {
+                  [EnumScreen.DeskTop, EnumScreen.Laptop].includes(screenSize) &&
+                  <h2 className={"text-sm group-hover:text-primary"}>
+                      {layout.label}
+                  </h2>
+              }
+
           </div>
         ))}
       </div>

@@ -7,8 +7,9 @@ import {
   TextSelectionIcon,
   Twitter,
 } from "lucide-react";
-import { PropertyConstants } from "@/constants/PropertyConstants";
-import { LayoutListsInterface } from "@/Data/LayoutLists";
+import {PropertyConstants} from "@/constants/PropertyConstants";
+import {LayoutListsInterface} from "@/Data/LayoutLists";
+
 export interface ElementListInterface
   extends Omit<LayoutListsInterface, "numOfCol"> {
   content?: string;

@@ -1,10 +1,13 @@
 "use client";
 import React from "react";
 import ElementLists from "@/Data/ElementLists";
-import { useDragDropLayoutElement } from "@/context/hooks/useDragDropLayoutElement";
+import {useDragDropLayoutElement} from "@/context/hooks/useDragDropLayoutElement";
+import {EnumScreen} from "@/constants/EnumScreen";
+import {useScreenSize} from "@/context/hooks/useScreenSize";
 
 const ElementListCards = () => {
   const { setDragElementLayout } = useDragDropLayoutElement();
+  const {screenSize}=useScreenSize();
   const onDragElementStart = ({ element }: { element: any }) => {
     setDragElementLayout({
       dragElement: {
@@ -33,9 +36,13 @@ const ElementListCards = () => {
                 />
               }
             </div>
-            <h2 className={"text-sm group-hover:text-primary"}>
-              {element.label}
-            </h2>
+              {
+                  [EnumScreen.DeskTop, EnumScreen.Laptop].includes(screenSize) &&
+                  <h2 className={"text-sm group-hover:text-primary"}>
+                      {element.label}
+                  </h2>
+              }
+
           </div>
         ))}
       </div>

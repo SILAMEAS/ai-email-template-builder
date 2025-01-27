@@ -2,24 +2,19 @@
 import React from 'react';
 import Image from "next/image";
 import {Button} from "@/components/ui/button";
-import {Code, Monitor, Smartphone} from "lucide-react";
+import {Code} from "lucide-react";
+import ButtonResponsive from "@/components/custom/button-change-device/ButtonResponsive";
+import {EnumScreen} from "@/constants/EnumScreen";
 import {useScreenSize} from "@/context/hooks/useScreenSize";
-import {Screen} from "@/constants/Screen";
 
 const EditorHeader = () => {
-    const {screenSize,setScreenSize}=useScreenSize();
+    const {screenSize}=useScreenSize();
+
     return (
         <div className={'p-4 shadow-sm flex justify-between items-center'}>
             <Image src={"/logo.png"} alt={"logo"} width={160} height={200}/>
-            <div>
-            <Button variant={'ghost'} onClick={()=>{setScreenSize(Screen.DeskTop)}} className={`${screenSize===Screen.DeskTop&&'bg-purple-100 text-primary'}`}>
-                <Monitor/> Desktop
-            </Button >
-                <Button variant={'ghost'} onClick={()=>{setScreenSize(Screen.Mobile)}} className={`${screenSize===Screen.Mobile&&'bg-purple-100 text-primary'}`}>
-                    <Smartphone/> Mobile
-                </Button>
-            </div>
-            <div className={'flex gap-3'}>
+            <ButtonResponsive/>
+            <div className={`flex gap-3 ${![EnumScreen.DeskTop, EnumScreen.Laptop].includes(screenSize)&&'flex-col flex-col-reverse'}`}>
                 <Button variant={'ghost'} className={'hover:text-primary hover:bg-purple-100'}>
                     <Code/>
                 </Button>

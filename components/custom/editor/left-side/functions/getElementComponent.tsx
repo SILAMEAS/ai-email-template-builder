@@ -1,39 +1,34 @@
-import { PropertyConstants } from "@/constants/PropertyConstants";
+import {PropertyConstants} from "@/constants/PropertyConstants";
 import ButtonElement from "@/components/custom/editor/left-side/elements/components/ButtonElement";
 import TextElement from "@/components/custom/editor/left-side/elements/components/TextElement";
 import ImageElement from "@/components/custom/editor/left-side/elements/components/ImageElement";
 import LogoElement from "@/components/custom/editor/left-side/elements/components/LogoElement";
+import DividerElement from "@/components/custom/editor/left-side/elements/components/DividerElement";
+import {ElementListInterface} from "@/Data/ElementLists";
 
-export const getElementComponent = (element: any) => {
+export const getElementComponent = (element: ElementListInterface) => {
   switch (element?.type) {
     case PropertyConstants.button: {
       return (
-        <ButtonElement
-          content={element?.content}
-          style={element?.style}
-          url={element?.url}
-        />
+        <ButtonElement{...element}/>
       );
     }
     case PropertyConstants.text: {
-      return <TextElement content={element?.content} style={element?.style} />;
+      return <TextElement  {...element}/>;
     }
     case PropertyConstants.image: {
       return (
-        <ImageElement
-          imageUrl={element?.imageUrl}
-          style={element?.style}
-          outerStyle={element?.outerStyle}
-        />
+        <ImageElement{...element}/>
       );
     }
     case PropertyConstants.logo: {
       return (
-        <LogoElement
-          imageUrl={element?.imageUrl}
-          style={element?.style}
-          outerStyle={element?.outerStyle}
-        />
+        <LogoElement{...element}/>
+      );
+    }
+    case PropertyConstants.divider: {
+      return (
+          <DividerElement{...element} />
       );
     }
 

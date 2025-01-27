@@ -6,11 +6,11 @@ import Setting from "@/components/custom/editor/right-side/Setting";
 
 const Editor = () => {
   return (
-    <div>
+    <div className={'w-full'}>
       <EditorHeader />
       <div className={"grid grid-cols-5"}>
         <ElementSideBar />
-        <div className={"col-span-3 bg-gray-200"}>
+        <div className={"col-span-3 bg-gray-200 mt-12"}>
           <Canvas />
         </div>
         <Setting />

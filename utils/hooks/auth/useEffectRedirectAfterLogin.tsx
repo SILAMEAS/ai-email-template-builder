@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Screen } from "@/constants/Screen";
+import {useEffect, useState} from "react";
+import {EnumScreen} from "@/constants/EnumScreen";
 
 const useEffectRedirectAfterLogin = () => {
   const [userDetail, setUserDetail] = useState<any>();
@@ -17,7 +17,7 @@ const useEffectRedirectAfterLogin = () => {
       } else {
         setUserDetail(storage);
         setEmailTemplate(storageEmailTemplate ?? []);
-        setScreenSize(Screen.DeskTop);
+        setScreenSize(EnumScreen.DeskTop);
       }
     }
   }, []);
