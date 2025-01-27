@@ -38,7 +38,6 @@ const ColumnLayout = ({ layout }: ColumnLayoutInterface) => {
     );
     setDragOver(undefined);
   };
-    // ${selectedSetting?.index===index&&'border-blue-500'}
   return (
     <div>
       <div
@@ -49,12 +48,10 @@ const ColumnLayout = ({ layout }: ColumnLayoutInterface) => {
         }}
       >
         {Array.from({ length: layout.numOfCol }).map((_, index) => {
-            console.log(selectedSetting?.layout?.id,layout?.id)
           return (
             <div
               key={index}
               onClick={()=>{
-                  console.log('layout',layout?.id)
                   setSelectedSetting({layout:layout,index:index})
               }}
               className={`p-2 flex items-center 

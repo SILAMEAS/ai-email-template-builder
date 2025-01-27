@@ -6,7 +6,10 @@ const useEffectRedirectAfterLogin = () => {
   const [screenSize, setScreenSize] = useState<any>();
   const [dragElementLayout, setDragElementLayout] = useState<any>();
   const [emailTemplate, setEmailTemplate] = useState<any>([]);
-  const [selectedSetting, setSelectedSetting] = useState<any>();
+  const [selectedSetting, setSelectedSetting] = useState<any>({
+    layout: [], // Initialize layout as an empty array
+    index: 0,   // Default index to a valid number
+  });
   useEffect(() => {
     if (typeof window !== undefined) {
       const storage = JSON.parse(localStorage.getItem("userDetail") as any);
@@ -28,6 +31,20 @@ const useEffectRedirectAfterLogin = () => {
         localStorage.setItem("emailTemplate", JSON.stringify(emailTemplate));
     }
   }, [emailTemplate]);
+  useEffect(()=>{
+    if(selectedSetting){
+      let updateEmailTemplate=[];
+      emailTemplate.forEach((item:any,index:number)=>{
+        if(item.id===selectedSetting?.layout?.id){
+          updateEmailTemplate.push(selectedSetting?.layout)
+        }else {
+          updateEmailTemplate.push(item);
+        }
+        setEmailTemplate(updateEmailTemplate);
+
+      })
+    }
+  },[selectedSetting])
   return {
     userDetail,
     screenSize,
