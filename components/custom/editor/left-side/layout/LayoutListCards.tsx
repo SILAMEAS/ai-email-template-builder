@@ -4,10 +4,8 @@ import Layout, { LayoutListsInterface } from "@/Data/LayoutLists";
 import { useDragDropLayoutElement } from "@/context/hooks/useDragDropLayoutElement";
 
 const LayoutListCards = () => {
-  const { setDragElementLayout, dragElementLayout } =
-    useDragDropLayoutElement();
+  const { setDragElementLayout } = useDragDropLayoutElement();
   const onDragLayoutStart = ({ layout }: { layout: LayoutListsInterface }) => {
-    console.log("onDragLayoutStart");
     setDragElementLayout({
       dragLayout: {
         ...layout,

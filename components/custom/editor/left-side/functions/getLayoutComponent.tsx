@@ -7,9 +7,6 @@ export const getLayoutComponent = (layout: LayoutListsInterface) => {
     case PropertyConstants.column: {
       return <ColumnLayout layout={layout} />;
     }
-    case PropertyConstants.logo: {
-      return <ColumnLayout layout={layout} />;
-    }
     default: {
       return <></>;
     }

@@ -9,14 +9,24 @@ const useEffectRedirectAfterLogin = () => {
   useEffect(() => {
     if (typeof window !== undefined) {
       const storage = JSON.parse(localStorage.getItem("userDetail") as any);
+      const storageEmailTemplate = JSON.parse(
+        localStorage.getItem("emailTemplate") as any,
+      );
       if (!storage?.email || !storage) {
         /** Redirect to home screen */
       } else {
         setUserDetail(storage);
+        setEmailTemplate(storageEmailTemplate ?? []);
         setScreenSize(Screen.DeskTop);
       }
     }
   }, []);
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      emailTemplate.length > 0 &&
+        localStorage.setItem("emailTemplate", JSON.stringify(emailTemplate));
+    }
+  }, [emailTemplate]);
   return {
     userDetail,
     setUserDetail,

@@ -8,6 +8,18 @@ import {
   Twitter,
 } from "lucide-react";
 import { PropertyConstants } from "@/constants/PropertyConstants";
+import { LayoutListsInterface } from "@/Data/LayoutLists";
+export interface ElementListInterface
+  extends Omit<LayoutListsInterface, "numOfCol"> {
+  content?: string;
+  url?: string;
+  style?: {};
+  outerStyle?: {};
+  textarea?: string;
+  imageUrl?: string;
+  alt?: string;
+  socialIcons?: Array<{ icon: string; url: string }>;
+}
 
 export default [
   {
@@ -23,7 +35,7 @@ export default [
       padding: "10px",
       width: "auto",
       fontSize: "16px",
-      borderRadius: "0px",
+      borderRadius: "10px",
       fontWeight: "normal",
       objectFit: "contain",
     },
@@ -38,9 +50,9 @@ export default [
     icon: TextSelectionIcon,
     type: PropertyConstants.text,
     label: "Text",
-    textarea: "Sample Text",
+    content: "Sample Text",
     style: {
-      backgroundColor: "#fff",
+      backgroundColor: "",
       color: "#000000",
       padding: "10px",
       textAlign: "center",
@@ -64,7 +76,7 @@ export default [
       backgroundColor: "#ffffff",
       padding: "10px",
       height: "50%",
-      width: "70%",
+      width: "50%",
       margin: "0px",
       borderRadius: "0px",
     },
@@ -80,14 +92,14 @@ export default [
     icon: Frame,
     type: PropertyConstants.logo,
     label: "Logo",
-    imageUrl: "/logo.svg",
+    imageUrl: "/logo.png",
     alt: "logo",
     url: "#",
     style: {
       backgroundColor: "#ffffff",
       padding: "10px",
-      height: "30%",
-      width: "30%",
+      height: "50%",
+      width: "50%",
     },
     outerStyle: {
       display: "flex",

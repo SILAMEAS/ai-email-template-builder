@@ -4,8 +4,6 @@ import { useScreenSize } from "@/context/hooks/useScreenSize";
 import { Screen } from "@/constants/Screen";
 import { useDragDropLayoutElement } from "@/context/hooks/useDragDropLayoutElement";
 import { useEmailTemplate } from "@/context/hooks/useEmailTemplate";
-import { PropertyConstants } from "@/constants/PropertyConstants";
-import ColumnLayout from "@/components/custom/editor/left-side/layout/components/ColumnLayout";
 import { getLayoutComponent } from "@/components/custom/editor/left-side/functions/getLayoutComponent";
 
 const Canvas = () => {
@@ -16,13 +14,11 @@ const Canvas = () => {
   const onDragOver = (e: any) => {
     e.preventDefault();
     setDragOver(true);
-    console.log("over ...");
   };
   const onDropHandle = () => {
     setDragOver(false);
-    const dragLayout = dragElementLayout?.dragLayout;
-    if (dragLayout) {
-      setEmailTemplate((pre: any) => [...pre, dragLayout]);
+    if (dragElementLayout?.dragLayout) {
+      setEmailTemplate((pre: any) => [...pre, dragElementLayout?.dragLayout]);
     }
   };
   return (
