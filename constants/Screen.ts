@@ -1,4 +1,4 @@
-export const Screen={
-    DeskTop:"DeskTop",
-    Mobile:"Mobile"
-}
+export const Screen = {
+  DeskTop: "DeskTop",
+  Mobile: "Mobile",
+};
