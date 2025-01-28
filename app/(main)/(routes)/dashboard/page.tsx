@@ -1,14 +1,14 @@
 "use client"
 import React from 'react';
-import {useUserDetail} from "@/context/hooks/useUserDetail";
 import {Button} from "@/components/ui/button";
 import EmailTemplateList from "@/components/custom/EmailTemplateList";
 import Header from "@/components/custom/Header";
 import Link from "next/link";
 import {Route} from "@/constants/Route";
+import {UserDetailContext_} from "@/context/global/UserDetailContext";
 
 const Dashboard = () => {
-    const {userDetail}=useUserDetail();
+    const {userDetail}=UserDetailContext_();
     return (
         <div>
             <Header/>

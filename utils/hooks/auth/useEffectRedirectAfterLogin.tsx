@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import { EnumScreen } from "@/constants/EnumScreen";
-import { selectedSettingType } from "@/context/types";
+import {useEffect, useState} from "react";
+import {EnumScreen} from "@/constants/EnumScreen";
 
 const useEffectRedirectAfterLogin = () => {
   const [userDetail, setUserDetail] = useState<any>();

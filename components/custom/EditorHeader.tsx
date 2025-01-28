@@ -5,10 +5,10 @@ import {Button} from "@/components/ui/button";
 import {Code} from "lucide-react";
 import ButtonResponsive from "@/components/custom/button-change-device/ButtonResponsive";
 import {EnumScreen} from "@/constants/EnumScreen";
-import {useScreenSize} from "@/context/hooks/useScreenSize";
+import {useScreenSizeContext_} from "@/context/global/ScreenSizeContext";
 
 const EditorHeader = () => {
-    const {screenSize}=useScreenSize();
+    const {screenSize}=useScreenSizeContext_();
 
     return (
         <div className={'p-4 shadow-sm flex justify-between items-center'}>

@@ -1,15 +1,13 @@
 "use client";
 import React from "react";
 import ElementLists from "@/Data/ElementLists";
-import {useDragDropLayoutElement} from "@/context/hooks/useDragDropLayoutElement";
 import {EnumScreen} from "@/constants/EnumScreen";
-import {useScreenSize} from "@/context/hooks/useScreenSize";
-import {useSelectedSetting} from "@/context/hooks/useSelectedSetting";
+import {useScreenSizeContext_} from "@/context/global/ScreenSizeContext";
+import {useDragDropLayoutElementContext_} from "@/context/global/DragDropLayoutElementContext";
 
 const ElementListCards = () => {
-  const {selectedSetting,setSelectedSetting}=useSelectedSetting();
-  const { setDragElementLayout } = useDragDropLayoutElement();
-  const {screenSize}=useScreenSize();
+  const { setDragElementLayout } = useDragDropLayoutElementContext_();
+  const {screenSize}=useScreenSizeContext_();
   const onDragElementStart = ({ element }: { element: any }) => {
     setDragElementLayout({
       dragElement: {

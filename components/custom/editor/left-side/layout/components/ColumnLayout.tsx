@@ -1,18 +1,18 @@
 "use client"
 import React, {useState} from "react";
-import {useEmailTemplate} from "@/context/hooks/useEmailTemplate";
-import {useDragDropLayoutElement} from "@/context/hooks/useDragDropLayoutElement";
 import {getElementComponent} from "@/components/custom/editor/left-side/functions/getElementComponent";
 import {ElementListInterface} from "@/Data/ElementLists";
-import {useSelectedSetting} from "@/context/hooks/useSelectedSetting";
+import {useEmailTemplateContext_} from "@/context/global/EmailTemplateContext";
+import {useDragDropLayoutElementContext_} from "@/context/global/DragDropLayoutElementContext";
+import {useSelectedSettingContext_} from "@/context/global/SelectedSettingContext";
 
 interface ColumnLayoutInterface {
   layout: any;
 }
 const ColumnLayout = ({ layout }: ColumnLayoutInterface) => {
-    const {selectedSetting, setSelectedSetting}=useSelectedSetting();
-  const { setEmailTemplate } = useEmailTemplate();
-  const { dragElementLayout } = useDragDropLayoutElement();
+    const {selectedSetting, setSelectedSetting}=useSelectedSettingContext_();
+  const { setEmailTemplate } = useEmailTemplateContext_();
+  const { dragElementLayout } = useDragDropLayoutElementContext_();
   const [dragOver, setDragOver] = useState<
     | {
         index: number;
@@ -29,13 +29,12 @@ const ColumnLayout = ({ layout }: ColumnLayoutInterface) => {
   };
   const onDropHandle = () => {
     const index = dragOver?.index;
-    setEmailTemplate((prevItem: any) =>
-      prevItem?.map((col: any) => {
-        return col.id === layout?.id
-          ? { ...col, [index ?? 0]: dragElementLayout?.dragElement }
-          : col;
-      }),
-    );
+    setEmailTemplate((prevItem) =>
+        prevItem?.map((col) => {
+            return col.id === layout?.id
+                ? {...col, [index ?? 0]: dragElementLayout?.dragElement}
+                : col;
+        }));
     setDragOver(undefined);
   };
   return (

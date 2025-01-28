@@ -1,8 +1,8 @@
-import {useScreenSize} from "@/context/hooks/useScreenSize";
 import {EnumScreen} from "@/constants/EnumScreen";
+import {useScreenSizeContext_} from "@/context/global/ScreenSizeContext";
 
 export const ResponsiveCanvas=():string=>{
-    const { screenSize } = useScreenSize();
+    const { screenSize } = useScreenSizeContext_();
     switch (screenSize){
         case EnumScreen.DeskTop:{
             return 'max-w-screen-xl'

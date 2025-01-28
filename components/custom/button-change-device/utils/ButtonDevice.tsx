@@ -1,10 +1,10 @@
 import React, {ReactNode} from 'react';
 import {EnumScreen} from "@/constants/EnumScreen";
 import {Button} from "@/components/ui/button";
-import {useScreenSize} from "@/context/hooks/useScreenSize";
+import {useScreenSizeContext_} from "@/context/global/ScreenSizeContext";
 
 const ButtonDevice = ({currentScreen,device,icon}:{currentScreen:EnumScreen,device:string,icon:ReactNode}) => {
-    const {screenSize,setScreenSize}=useScreenSize();
+    const {screenSize,setScreenSize}=useScreenSizeContext_();
     return (
         <Button variant={'ghost'} onClick={() => {
             setScreenSize(currentScreen)

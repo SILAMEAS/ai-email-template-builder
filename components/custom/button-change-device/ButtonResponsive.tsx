@@ -3,10 +3,10 @@ import ButtonDevice from "@/components/custom/button-change-device/utils/ButtonD
 import React from 'react';
 import {EnumScreen} from "@/constants/EnumScreen";
 import {Laptop, Monitor, Smartphone, TabletSmartphone} from "lucide-react";
-import {useScreenSize} from "@/context/hooks/useScreenSize";
+import {useScreenSizeContext_} from "@/context/global/ScreenSizeContext";
 
 const ButtonResponsive = () => {
-    const {screenSize}=useScreenSize();
+    const {screenSize}=useScreenSizeContext_();
     return (
         <div className={`flex justify-center gap-1 ${![EnumScreen.DeskTop, EnumScreen.Laptop].includes(screenSize)&&'flex-col'}`}>
             <ButtonDevice currentScreen={EnumScreen.DeskTop} device={EnumScreen.DeskTop} icon={<Monitor/> }/>

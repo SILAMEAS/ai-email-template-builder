@@ -1,12 +1,12 @@
 "use client"
 import React, {useState} from 'react';
-import {useSelectedSetting} from "@/context/hooks/useSelectedSetting";
 import InputField from "@/components/custom/editor/right-side/components/InputField";
 import {checkProperty} from "@/components/custom/editor/right-side/utils/common/checkProperty";
 import ColorPickerField from "@/components/custom/editor/right-side/components/ColorPickerField";
+import {selectedSettingType, useSelectedSettingContext_} from "@/context/global/SelectedSettingContext";
 
 const Setting = () => {
-    const {selectedSetting,setSelectedSetting}=useSelectedSetting();
+    const {selectedSetting,setSelectedSetting}=useSelectedSettingContext_();
     const [element,setElement]=useState<any>();
     React.useEffect(()=>{
         setElement(selectedSetting?.layout?.[selectedSetting?.index])
@@ -18,22 +18,21 @@ const Setting = () => {
     };
     const onHandleChangeStyle = (fieldName: string, value: string) => {
         // Ensure selectedSetting has a layout property and initialize it if missing
-        const updateData = {
+        const updateData: selectedSettingType = {
             ...selectedSetting,
             layout: selectedSetting.layout || [], // Default to an empty array
         };
 
         // Ensure the index exists and is valid
-        if (updateData.index >= updateData.layout.length) {
-            console.error("Index out of bounds:", updateData.index);
+        if (updateData?.index >= updateData.layout.length) {
             return; // Exit if the index is invalid
         }
 
         // Clone the specific layout item and its style
         const layoutItem = {
-            ...updateData.layout[updateData.index],
+            ...updateData.layout[updateData?.index],
             style: {
-                ...updateData.layout[updateData.index]?.style,
+                ...updateData.layout[updateData?.index]?.style,
             },
         };
 

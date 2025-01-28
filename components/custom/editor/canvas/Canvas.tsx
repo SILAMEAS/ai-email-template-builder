@@ -1,14 +1,14 @@
 "use client";
 import React, {useState} from "react";
-import {useDragDropLayoutElement} from "@/context/hooks/useDragDropLayoutElement";
-import {useEmailTemplate} from "@/context/hooks/useEmailTemplate";
 import {getLayoutComponent} from "@/components/custom/editor/left-side/functions/getLayoutComponent";
 import {ResponsiveCanvas} from "@/utils/common/responsive/ResponsiveCanvas";
+import {useDragDropLayoutElementContext_} from "@/context/global/DragDropLayoutElementContext";
+import {useEmailTemplateContext_} from "@/context/global/EmailTemplateContext";
 
 const Canvas = () => {
   const [dragOver, setDragOver] = useState<boolean>(false);
-  const { dragElementLayout } = useDragDropLayoutElement();
-  const { emailTemplate, setEmailTemplate } = useEmailTemplate();
+  const { dragElementLayout } = useDragDropLayoutElementContext_();
+  const { emailTemplate, setEmailTemplate } = useEmailTemplateContext_();
   const onDragOver = (e: any) => {
     e.preventDefault();
     setDragOver(true);
@@ -16,7 +16,9 @@ const Canvas = () => {
   const onDropHandle = () => {
     setDragOver(false);
     if (dragElementLayout?.dragLayout) {
-      setEmailTemplate((pre: any) => [...pre, dragElementLayout?.dragLayout]);
+      setEmailTemplate(pre => {
+        return [...pre, dragElementLayout?.dragLayout];
+      });
     }
   };
   return (
@@ -26,7 +28,7 @@ const Canvas = () => {
         onDragOver={onDragOver}
         onDrop={onDropHandle}
       >
-        {emailTemplate?.length > 0 ? (
+        {emailTemplate && emailTemplate?.length > 0 ? (
           emailTemplate?.map((layout: any, index: number) => (
             <div key={index}>{getLayoutComponent(layout)}</div>
           ))
