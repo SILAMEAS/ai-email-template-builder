@@ -1,5 +1,6 @@
-import {useEffect, useState} from "react";
-import {EnumScreen} from "@/constants/EnumScreen";
+import { useEffect, useState } from "react";
+import { EnumScreen } from "@/constants/EnumScreen";
+import { selectedSettingType } from "@/context/types";
 
 const useEffectRedirectAfterLogin = () => {
   const [userDetail, setUserDetail] = useState<any>();
@@ -8,7 +9,7 @@ const useEffectRedirectAfterLogin = () => {
   const [emailTemplate, setEmailTemplate] = useState<any>([]);
   const [selectedSetting, setSelectedSetting] = useState<any>({
     layout: [], // Initialize layout as an empty array
-    index: 0,   // Default index to a valid number
+    index: 0, // Default index to a valid number
   });
   useEffect(() => {
     if (typeof window !== undefined) {
@@ -31,20 +32,19 @@ const useEffectRedirectAfterLogin = () => {
         localStorage.setItem("emailTemplate", JSON.stringify(emailTemplate));
     }
   }, [emailTemplate]);
-  useEffect(()=>{
-    if(selectedSetting){
-      let updateEmailTemplate=[];
-      emailTemplate.forEach((item:any,index:number)=>{
-        if(item.id===selectedSetting?.layout?.id){
-          updateEmailTemplate.push(selectedSetting?.layout)
-        }else {
+  useEffect(() => {
+    if (selectedSetting) {
+      let updateEmailTemplate = [];
+      emailTemplate.forEach((item: any, index: number) => {
+        if (item.id === selectedSetting?.layout?.id) {
+          updateEmailTemplate.push(selectedSetting?.layout);
+        } else {
           updateEmailTemplate.push(item);
         }
         setEmailTemplate(updateEmailTemplate);
-
-      })
+      });
     }
-  },[selectedSetting])
+  }, [selectedSetting]);
   return {
     userDetail,
     screenSize,
@@ -55,7 +55,7 @@ const useEffectRedirectAfterLogin = () => {
     setSelectedSetting,
     setDragElementLayout,
     setUserDetail,
-    setScreenSize
+    setScreenSize,
   };
 };
 
