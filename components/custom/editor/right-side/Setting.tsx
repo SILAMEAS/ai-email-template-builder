@@ -6,6 +6,7 @@ import {ElementListInterface} from "@/Data/ElementLists";
 import ColorPickerField from "@/components/custom/editor/right-side/components/ColorPickerField";
 import SliderField from "@/components/custom/editor/right-side/components/SliderField";
 import TextAreaField from "@/components/custom/editor/right-side/components/TextAreaField";
+import ToggleGroupField from "@/components/custom/editor/right-side/components/ToggleGroupField";
 
 const Setting = () => {
   const { selectedSetting, setSelectedSetting } = useSelectedSettingContext_();
@@ -51,8 +52,8 @@ const Setting = () => {
     setSelectedSetting(updateData);
   };
 React.useEffect(()=>{
-  console.log('selectedSetting',selectedSetting);
-  console.log('textarea',element?.textarea )
+  // console.log('selectedSetting',selectedSetting);
+  // console.log('textarea',element?.textarea )
 },[selectedSetting])
   return (
     <div className={"p-5"}>
@@ -95,11 +96,17 @@ React.useEffect(()=>{
                   key={key}
                   label={key}
                   value={value}
-                  onChange={(e) =>
-                      onHandleChangeStyle(key, e.target.value)
+                  onChange={(e) => {
+                    onHandleChangeStyle(key, e.target.value)
+                  }
                   }
               />
-            }else if(key.toLowerCase().includes('border')||key.toLowerCase().includes('width')){
+            }else if(key.toLowerCase().includes('textalign')){
+              return <ToggleGroupField option={['left','center','right']} key={key} label={key} value={value}  onValueChange={(e) => {
+                onHandleChangeStyle(key, e);
+              }}/>
+
+            } else if(key.toLowerCase().includes('border')||key.toLowerCase().includes('width')){
               return <SliderField
                   key={key}
                   label={key}

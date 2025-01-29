@@ -53,7 +53,7 @@ const ColumnLayout = ({ layout }: ColumnLayoutInterface) => {
               onClick={()=>{
                   setSelectedSetting({layout:layout,index:index})
               }}
-              className={`p-2 flex items-center 
+              className={`p-0 flex items-center 
               ${!layout?.[index]?.type && "bg-gray-100 border border-dashed"} justify-center 
               ${index === dragOver?.index && dragOver?.columId && "bg-green-100"} cursor-pointer
               ${(selectedSetting?.layout?.id===layout?.id&& selectedSetting?.index===index)&&'border-2 border-blue-500 p-10'}`}

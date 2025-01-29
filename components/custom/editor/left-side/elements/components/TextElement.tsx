@@ -3,16 +3,14 @@ import {ElementListInterface} from "@/Data/ElementLists";
 
 const TextElement = ({
                          textarea,
-  style,
-                         outerStyle
-}: Pick<ElementListInterface, "textarea" | "style"|"outerStyle">) => {
+  style
+}: Pick<ElementListInterface, "textarea" | "style">) => {
   return (
     <div style={{
-        ...outerStyle,
         wordWrap:"break-word",
         overflowWrap:'break-word',
-        whiteSpace:"normal"
-    }}>
+        whiteSpace:"normal",
+    }} className={'w-full'}>
       <h2 style={style}>{textarea}</h2>
     </div>
   );
