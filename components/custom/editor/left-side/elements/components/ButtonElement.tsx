@@ -1,5 +1,5 @@
 import React from "react";
-import { ElementListInterface } from "@/Data/ElementLists";
+import {ElementListInterface} from "@/Data/ElementLists";
 
 const ButtonElement = ({
   content,
@@ -9,7 +9,7 @@ const ButtonElement = ({
   return (
     <div>
       <a href={url}>
-        <button style={style}>{content}</button>
+        <div style={style}>{content}</div>
       </a>
     </div>
   );

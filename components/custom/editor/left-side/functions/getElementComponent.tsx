@@ -1,16 +1,16 @@
-import { PropertyConstants } from "@/constants/PropertyConstants";
+import {PropertyConstants} from "@/constants/PropertyConstants";
 import ButtonElement from "@/components/custom/editor/left-side/elements/components/ButtonElement";
 import TextElement from "@/components/custom/editor/left-side/elements/components/TextElement";
 import ImageElement from "@/components/custom/editor/left-side/elements/components/ImageElement";
 import LogoElement from "@/components/custom/editor/left-side/elements/components/LogoElement";
 import DividerElement from "@/components/custom/editor/left-side/elements/components/DividerElement";
-import { ElementListInterface } from "@/Data/ElementLists";
+import {ElementListInterface} from "@/Data/ElementLists";
 import SocialMediaElements from "@/components/custom/editor/left-side/elements/components/SocialMediaElements";
 
 export const getElementComponent = (element: ElementListInterface) => {
   switch (element?.type) {
     case PropertyConstants.button: {
-      return <ButtonElement {...element} />;
+      return <ButtonElement content={element?.content} style={element?.style} url={element?.url} />;
     }
     case PropertyConstants.text: {
       return <TextElement {...element} />;

@@ -9,20 +9,22 @@ import {
 } from "lucide-react";
 import {PropertyConstants} from "@/constants/PropertyConstants";
 import {LayoutListsInterface} from "@/Data/LayoutLists";
+import React from "react";
+
 
 export interface ElementListInterface
   extends Omit<LayoutListsInterface, "numOfCol"> {
   content?: string;
   url?: string;
-  style?: {};
-  outerStyle?: {};
+  style?:  React.CSSProperties,
+  outerStyle?:React.CSSProperties,
   textarea?: string;
   imageUrl?: string;
   alt?: string;
   socialIcons?: Array<{ icon: string; url: string }>;
 }
 
-export default [
+export const ElementLists:Array<Record<string,any>|{style?:React.CSSProperties}> = [
   {
     icon: RectangleEllipsis,
     label: "Button",
@@ -34,6 +36,8 @@ export default [
       backgroundColor: "#007bff",
       color: "#ffffff",
       padding: "10px",
+      paddingTop:'10px',
+      paddingBottom:'10px',
       width: "auto",
       fontSize: "16px",
       borderRadius: "10px",
@@ -184,3 +188,4 @@ export default [
     },
   },
 ];
+export default ElementLists;

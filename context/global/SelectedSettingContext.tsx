@@ -1,6 +1,6 @@
 import React, {createContext, useContext} from "react"
 
-export type selectedSettingType=Record<string, any>|{index?:number,layout?:any};
+export type selectedSettingType=Record<string, any>|{index?:number,layout?:Record<string, any>};
 export type SelectedSettingContent = {
     selectedSetting: selectedSettingType,
     setSelectedSetting: React.Dispatch<React.SetStateAction<selectedSettingType>>

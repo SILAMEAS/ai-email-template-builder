@@ -1,16 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import InputField from "@/components/custom/editor/right-side/components/InputField";
-import { checkProperty } from "@/components/custom/editor/right-side/utils/common/checkProperty";
+import {selectedSettingType, useSelectedSettingContext_,} from "@/context/global/SelectedSettingContext";
+import {ElementListInterface} from "@/Data/ElementLists";
 import ColorPickerField from "@/components/custom/editor/right-side/components/ColorPickerField";
-import {
-  selectedSettingType,
-  useSelectedSettingContext_,
-} from "@/context/global/SelectedSettingContext";
 
 const Setting = () => {
   const { selectedSetting, setSelectedSetting } = useSelectedSettingContext_();
-  const [element, setElement] = useState<any>();
+  const [element, setElement] = useState<ElementListInterface>(selectedSetting?.layout?.[selectedSetting?.index]);
   React.useEffect(() => {
     setElement(selectedSetting?.layout?.[selectedSetting?.index]);
   }, [selectedSetting]);
@@ -22,8 +19,7 @@ const Setting = () => {
   const onHandleChangeStyle = (fieldName: string, value: string) => {
     // Ensure selectedSetting has a layout property and initialize it if missing
     const updateData: selectedSettingType = {
-      ...selectedSetting,
-      layout: selectedSetting.layout || [], // Default to an empty array
+      ...selectedSetting
     };
 
     // Ensure the index exists and is valid
@@ -51,10 +47,10 @@ const Setting = () => {
 
   return (
     <div className={"p-5"}>
-      <h2 className={"font-bold text-xl"}> Setting </h2>
+      <h2 className={"font-bold text-xl mb-4"}> Setting </h2>
       {!selectedSetting && <p>select layout to setting property</p>}
       {/** Input Field */}
-      {checkProperty(element)?.content && (
+      {element?.content&& (
         <InputField
           label={"Content"}
           value={element?.content}
@@ -63,16 +59,32 @@ const Setting = () => {
           }}
         />
       )}
-      {/** ColorPicker Field */}
-      {checkProperty(element)?.backgroundColor && (
-        <ColorPickerField
-          label={"Background"}
-          value={element?.style?.backgroundColor}
-          onChange={(e) =>
-            onHandleChangeStyle("backgroundColor", e.target.value)
-          }
-        />
-      )}
+    <div className={'flex flex-col space-y-3 mt-3'}>
+      {
+          element?.style&&Object.entries(element?.style).map(([key,value],index)=>{
+            console.log('item',key,value,key.toString().includes('color'));
+            const C= key.toLowerCase().includes('color');
+            if(C){
+              return <ColorPickerField
+                  key={key}
+                  label={key}
+                  value={value}
+                  onChange={(e) =>
+                      onHandleChangeStyle(key, e.target.value)
+                  }
+              />
+            }
+            return <InputField
+                key={key}
+                label={key}
+                value={value}
+                onChange={(e) => {
+                  onHandleChangeStyle(key, e.target.value);
+                }}
+            />
+          })
+      }
+    </div>
     </div>
   );
 };
