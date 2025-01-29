@@ -1,13 +1,19 @@
 import React from "react";
-import { ElementListInterface } from "@/Data/ElementLists";
+import {ElementListInterface} from "@/Data/ElementLists";
 
 const TextElement = ({
-  content,
+                         textarea,
   style,
-}: Pick<ElementListInterface, "content" | "style">) => {
+                         outerStyle
+}: Pick<ElementListInterface, "textarea" | "style"|"outerStyle">) => {
   return (
-    <div>
-      <h2 style={style}>{content}</h2>
+    <div style={{
+        ...outerStyle,
+        wordWrap:"break-word",
+        overflowWrap:'break-word',
+        whiteSpace:"normal"
+    }}>
+      <h2 style={style}>{textarea}</h2>
     </div>
   );
 };

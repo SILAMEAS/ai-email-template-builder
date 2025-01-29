@@ -53,22 +53,22 @@ export const ElementLists:Array<ElementListInterface> = [
   },
   {
     icon: TextSelectionIcon,
-    type: PropertyConstants.text,
-    label: "Text",
-    content: "Sample Text",
+    type: 'Text',
+    label: 'Text',
+    textarea: 'Sample Text',
     style: {
-      backgroundColor: "",
-      color: "#000000",
-      padding: "10px",
-      textAlign: "center",
-      fontSize: "22px",
-      fontWeight: "normal",
-      textTransform: "uppercase", //lowercase , capitilized
+      backgroundColor: '#fff',
+      color: '#000000',
+      padding: '10px',
+      textAlign: 'center',
+      fontSize: '22px',
+      fontWeight: 'normal',
+      textTransform: 'uppercase'//lowercase , capitilized
     },
     outerStyle: {
-      backgroundColor: "#fff",
-      width: "100%",
-    },
+      backgroundColor: '#fff',
+      width: '100px'
+    }
   },
   {
     icon: Image,

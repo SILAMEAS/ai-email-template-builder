@@ -20,9 +20,9 @@ const ElementListCards = () => {
     <div className={"mt-6"}>
       <h2 className={"font-bold text-lg"}>Elements</h2>
       <div className={"grid grid-cols-1 md:grid-cols-2 gap-5"}>
-        {ElementLists.map((element) => (
+        {ElementLists.map((element,index) => (
           <button
-            key={`${new Date()}`}
+            key={`${index}`}
             className="flex justify-center items-center flex-col border border-dashed rounded-xl p-3 group hover:shadow-md hover:border-primary cursor-pointer"
             draggable
             onDragStart={() => onDragElementStart({ element })}

@@ -4,9 +4,11 @@ import {Input} from "@/components/ui/input";
 
 const ColorPickerField = ({value,label,onChange}:IInput) => {
     return (
-        <div>
-            <label>{label}</label>
-            <Input type={'color'} value={value} onChange={onChange}/>
+        <div className={'flex items-center'}>
+            <label className={'w-[50%]'}>{label}</label>
+           <div className={'flex flex-grow'}>
+               <Input type={'color'} value={value} onChange={onChange}/>
+           </div>
         </div>
     );
 };
