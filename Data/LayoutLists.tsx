@@ -8,7 +8,7 @@ import {
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 import { PropertyConstants } from "@/constants/PropertyConstants";
 
-export interface LayoutListsInterface {
+export interface LayoutListsInterface extends Record<string, any> {
   label: string;
   type: PropertyConstants;
   numOfCol: number;

@@ -3,12 +3,9 @@ import ColumnLayout from "@/components/custom/editor/left-side/layout/components
 import { LayoutListsInterface } from "@/Data/LayoutLists";
 
 export const getLayoutComponent = (layout: LayoutListsInterface) => {
-  switch (layout?.type) {
-    case PropertyConstants.column: {
-      return <ColumnLayout layout={layout} />;
-    }
-    default: {
-      return <></>;
-    }
-  }
+  return layout?.type === PropertyConstants.column ? (
+    <ColumnLayout layout={layout} />
+  ) : (
+    <></>
+  );
 };
