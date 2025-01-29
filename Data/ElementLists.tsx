@@ -23,8 +23,8 @@ export interface ElementListInterface
   alt?: string;
   socialIcons?: Array<{ icon: string; url: string }>;
 }
-
-export const ElementLists:Array<Record<string,any>|{style?:React.CSSProperties}> = [
+export type typeElementList = Record<string,any>|{style?:React.CSSProperties};
+export const ElementLists:Array<ElementListInterface> = [
   {
     icon: RectangleEllipsis,
     label: "Button",
