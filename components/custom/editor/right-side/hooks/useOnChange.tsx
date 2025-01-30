@@ -18,7 +18,7 @@ const useOnChange = () => {
         setSelectedSetting(updateData);
     };
     {/** ===================================================================================== **/}
-    {/**                          onHandleChangeStyle for css property                         **/}
+    {/**                           css property                                                **/}
     {/** ===================================================================================== **/}
     const onHandleChangeStyle = (fieldName: string, value: string|Array<number>,percent?:boolean) => {
         // Ensure selectedSetting has a layout property and initialize it if missing
@@ -52,11 +52,46 @@ const useOnChange = () => {
         // Update the state
         setSelectedSetting(updateData);
     };
+    {/** ===================================================================================== **/}
+    {/**                           outStyle css property                                                **/}
+    {/** ===================================================================================== **/}
+    const onHandleChangeOutStyle = (fieldName: string, value: string|Array<number>,percent?:boolean) => {
+        // Ensure selectedSetting has a layout property and initialize it if missing
+        const updateData: selectedSettingType = {
+            ...selectedSetting
+        };
+
+        // Ensure the index exists and is valid
+        if (updateData?.index >= updateData.layout.length) {
+            return; // Exit if the index is invalid
+        }
+
+        // Clone the specific layout item and its style
+        const layoutItem = {
+            ...updateData.layout[updateData?.index],
+            outerStyle: {
+                ...updateData.layout[updateData?.index]?.outerStyle,
+            },
+        };
+
+        // Update the style dynamically
+        if(Array.isArray(value)){
+            layoutItem.outerStyle[fieldName] =`${value[0]}${percent?'%': 'px'}`;
+        }else {
+            layoutItem.outerStyle[fieldName] = value;
+        }
+
+        // Replace the updated item back in the layout array
+        updateData.layout[updateData.index] = layoutItem;
+
+        // Update the state
+        setSelectedSetting(updateData);
+    };
     React.useEffect(()=>{
         // console.log('selectedSetting',selectedSetting);
         // console.log('textarea',element?.textarea )
     },[selectedSetting])
-    return {element,selectedSetting,onHandleChange,onHandleChangeStyle}
+    return {element,selectedSetting,onHandleChange,onHandleChangeStyle,onHandleChangeOutStyle}
 };
 
 export default useOnChange;

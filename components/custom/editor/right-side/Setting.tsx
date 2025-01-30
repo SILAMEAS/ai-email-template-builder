@@ -7,7 +7,7 @@ import RenderComponentCustomSetting
   from "@/components/custom/editor/right-side/renderComponents/RenderComponentCustomSetting";
 
 const Setting = () => {
-const {element,onHandleChangeStyle,onHandleChange}=useOnChange();
+const {element,onHandleChangeStyle,onHandleChange,onHandleChangeOutStyle}=useOnChange();
   return (
     <div className={"p-5"}>
       <h2 className={"font-bold text-xl mb-4"}> Setting </h2>
@@ -18,7 +18,7 @@ const {element,onHandleChangeStyle,onHandleChange}=useOnChange();
         {/** ===================================================================================== **/}
         {/**                             Style from Css Property                                   **/}
         {/** ===================================================================================== **/}
-        <RenderComponentFromCssProperty onHandleChangeStyle={onHandleChangeStyle} element={element}/>
+        <RenderComponentFromCssProperty onHandleChangeStyle={onHandleChangeStyle} element={element} onHandleChangeOutStyle={onHandleChangeOutStyle}/>
     </div>
   );
 };

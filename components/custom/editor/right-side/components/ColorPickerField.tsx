@@ -5,7 +5,7 @@ import LabelField from "@/components/custom/editor/right-side/components/LabelFi
 
 const ColorPickerField = ({value,label,onChange}:IInput) => {
     return (
-        <div className={'flex items-center'}>
+        <div className={'flex items-center gap-x-10'}>
             <LabelField label={label} style={{width:"50%"}}/>
            <div className={'flex flex-grow'}>
                <Input type={'color'} value={value} onChange={onChange}/>

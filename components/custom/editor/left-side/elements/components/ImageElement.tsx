@@ -1,5 +1,5 @@
 import React from "react";
-import { ElementListInterface } from "@/Data/ElementLists";
+import {ElementListInterface} from "@/Data/ElementLists";
 
 const ImageElement = ({
   imageUrl,
@@ -8,7 +8,7 @@ const ImageElement = ({
 }: Pick<ElementListInterface, "imageUrl" | "style" | "outerStyle">) => {
   return (
     <div style={outerStyle}>
-      <img src={imageUrl} alt={"image" + imageUrl} style={style} />
+      <img src={imageUrl} alt={"image" + imageUrl} style={style} className={'object-cover'}/>
     </div>
   );
 };

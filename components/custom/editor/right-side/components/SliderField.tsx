@@ -6,8 +6,9 @@ const SliderField = ({label,value,onValueChange}:IInput) => {
     return (
         <div>
             <label>{label} {`(${value})`}</label>
-            <Slider defaultValue={[Number(value)]} max={100} step={1} onValueChange={onValueChange}/>
-
+            <div className={'flex p-2'}>
+                <Slider defaultValue={[Number(value)]} max={100} step={1} onValueChange={onValueChange}/>
+            </div>
         </div>
     );
 };

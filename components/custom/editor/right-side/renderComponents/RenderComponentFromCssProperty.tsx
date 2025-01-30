@@ -1,64 +1,25 @@
 import React from 'react';
-import ColorPickerField from "@/components/custom/editor/right-side/components/ColorPickerField";
-import ToggleGroupField from "@/components/custom/editor/right-side/components/ToggleGroupField";
-import SliderField from "@/components/custom/editor/right-side/components/SliderField";
-import InputField from "@/components/custom/editor/right-side/components/InputField";
 import {ElementListInterface} from "@/Data/ElementLists";
+import ComponentsRenderCss from "@/components/custom/editor/right-side/renderComponents/ComponentsRenderCss";
 
+export type IRenderComponentFromCssProperty= {element: ElementListInterface,onHandleChangeOutStyle?: (fieldName: string, value: (string | Array<number>), percent?: boolean) => void,onHandleChangeStyle?: (fieldName: string, value: (string | Array<number>), percent?: boolean) => void}
 {/** ===================================================================================== **/}
 {/**                             Style from Css Property                                   **/}
 {/** ===================================================================================== **/}
-const RenderComponentFromCssProperty = ({element,onHandleChangeStyle}:
-                                            {element: ElementListInterface,onHandleChangeStyle: (fieldName: string, value: (string | Array<number>), percent?: boolean) => void}) => {
+const RenderComponentFromCssProperty = ({element,onHandleChangeStyle,onHandleChangeOutStyle}:IRenderComponentFromCssProperty) => {
     return <div className={'flex flex-col space-y-3 mt-3'}>
         {
             element?.style&&Object.entries(element?.style).map(([key,value])=>{
-                if(key.toLowerCase().includes('color')){
-                    {/** ===================================================================================== **/}
-                    {/**                             Color Or Background Color                                 **/}
-                    {/** ===================================================================================== **/}
-                    return <ColorPickerField
-                        key={key}
-                        label={key}
-                        value={value}
-                        onChange={(e) => {
-                            onHandleChangeStyle(key, e.target.value)
-                        }
-                        }
-                    />
-                }else if(key.toLowerCase().includes('textalign')){
-                    {/** ===================================================================================== **/}
-                    {/**                             Text Align                                                **/}
-                    {/** ===================================================================================== **/}
-                    return <ToggleGroupField option={['left','center','right']} key={key} label={key} value={value}  onValueChange={(e) => {
-                        onHandleChangeStyle(key, e);
-                    }}/>
-
-                } else if(key.toLowerCase().includes('border')||key.toLowerCase().includes('width')){
-                    {/** ===================================================================================== **/}
-                    {/**                             Width and border Property                                 **/}
-                    {/** ===================================================================================== **/}
-                    return <SliderField
-                        key={key}
-                        label={key}
-                        value={value}
-                        onValueChange={(e) =>{
-                            onHandleChangeStyle(key,e,key.toLowerCase().includes('width'))
-                        }}
-                    />
-                } else {
-                    {/** ===================================================================================== **/}
-                    {/**                             Input Normal                                              **/}
-                    {/** ===================================================================================== **/}
-                    return <InputField
-                        key={key}
-                        label={key}
-                        value={value}
-                        onChange={(e) => {
-                            onHandleChangeStyle(key, e.target.value);
-                        }}
-                    />
-                }
+               return  onHandleChangeStyle&&<ComponentsRenderCss key={key} value={value} KEY={key} onHandleChangeStyle={onHandleChangeStyle}/>
+            })
+        }
+        {
+            element?.outerStyle &&
+            <h2 className={'text-center py-5 border bg-blue-400 text-white'}> Container Style</h2>
+        }
+        {
+            element?.outerStyle&&Object.entries(element?.outerStyle).map(([key,value])=>{
+                return  onHandleChangeOutStyle&&<ComponentsRenderCss key={key} value={value} KEY={key} onHandleChangeOutStyle={onHandleChangeOutStyle}/>
             })
         }
     </div>

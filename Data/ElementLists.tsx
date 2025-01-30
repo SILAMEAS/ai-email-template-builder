@@ -41,8 +41,7 @@ export const ElementLists:Array<ElementListInterface> = [
       width: "auto",
       fontSize: "16px",
       borderRadius: "10px",
-      fontWeight: "normal",
-      objectFit: "contain",
+      fontWeight: "normal"
     },
     outerStyle: {
       display: "flex",
@@ -59,15 +58,16 @@ export const ElementLists:Array<ElementListInterface> = [
     style: {
       backgroundColor: '#fff',
       color: '#000000',
-      padding: '10px',
       textAlign: 'center',
-      fontSize: '22px',
+      textTransform: 'uppercase',
       fontWeight: 'normal',
-      textTransform: 'uppercase'//lowercase , capitilized
+      padding: '10px',
+      fontSize: '22px',
+      width: "100px",
     },
     outerStyle: {
       backgroundColor: '#fff',
-      width: '100px'
+      width: '100%'
     }
   },
   {
@@ -79,11 +79,12 @@ export const ElementLists:Array<ElementListInterface> = [
     url: "#",
     style: {
       backgroundColor: "#ffffff",
-      padding: "10px",
+      padding: "0px",
       height: "50%",
-      width: "50%",
+      width: "100%",
       margin: "0px",
       borderRadius: "0px",
+      objectFit: "contain",
     },
     outerStyle: {
       display: "flex",
