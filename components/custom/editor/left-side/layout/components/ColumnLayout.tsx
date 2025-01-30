@@ -33,7 +33,7 @@ const ColumnLayout = ({ layout }: ColumnLayoutInterface) => {
     const index = dragOver?.index;
     setEmailTemplate((prevItem) =>
         prevItem?.map((col) => {
-            return col.id === layout?.id
+            return col?.id === layout?.id
                 ? {...col, [index ?? 0]: dragElementLayout?.dragElement}
                 : col;
         }));
@@ -98,7 +98,7 @@ const ColumnLayout = ({ layout }: ColumnLayoutInterface) => {
         })}
           {
               selectedSetting?.layout?.id===layout?.id&&
-              <div className={'absolute -right-12 flex gap-2 flex-col'}>
+              <div className={'absolute -right-11 flex gap-2 flex-col'}>
                   <div
                       className={'cursor-pointer rounded-full hover:shadow-md transition-all hover:scale-105 bg-purple-100 p-2'}
                       onClick={() => moveItemUp(layout)}>

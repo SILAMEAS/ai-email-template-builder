@@ -1,14 +1,14 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Code } from "lucide-react";
+import {Button} from "@/components/ui/button";
+import {Code} from "lucide-react";
 import ButtonResponsive from "@/components/custom/button-change-device/ButtonResponsive";
-import { EnumScreen } from "@/constants/EnumScreen";
-import { useScreenSizeContext_ } from "@/context/global/ScreenSizeContext";
+import {EnumScreen} from "@/constants/EnumScreen";
+import {useScreenSizeContext_} from "@/context/global/ScreenSizeContext";
 import Link from "next/link";
 
-const EditorHeader = () => {
+const EditorHeader = ({onClick}:{onClick?: React.MouseEventHandler<HTMLButtonElement>}) => {
   const { screenSize } = useScreenSizeContext_();
 
   return (
@@ -23,6 +23,7 @@ const EditorHeader = () => {
         <Button
           variant={"ghost"}
           className={"hover:text-primary hover:bg-purple-100"}
+          onClick={onClick}
         >
           <Code />
         </Button>
