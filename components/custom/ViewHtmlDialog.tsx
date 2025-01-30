@@ -1,19 +1,11 @@
 "use client"
 import React from 'react';
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog"
+import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle,} from "@/components/ui/dialog"
 import {Copy} from "lucide-react";
 
 const ViewHtmlDialog = ({htmlCode,openDialog,closeDialog}:{htmlCode:string,openDialog:boolean,closeDialog: (open: boolean) => void}) => {
     return (
         <Dialog open={openDialog} onOpenChange={closeDialog}>
-            <DialogTrigger>Open</DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle asChild>
