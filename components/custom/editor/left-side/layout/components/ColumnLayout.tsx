@@ -5,13 +5,15 @@ import {ElementListInterface} from "@/Data/ElementLists";
 import {useEmailTemplateContext_} from "@/context/global/EmailTemplateContext";
 import {useDragDropLayoutElementContext_} from "@/context/global/DragDropLayoutElementContext";
 import {useSelectedSettingContext_} from "@/context/global/SelectedSettingContext";
+import {ArrowDown, ArrowUp, Trash} from "lucide-react";
+import {LayoutListsInterface} from "@/Data/LayoutLists";
 
 interface ColumnLayoutInterface {
-  layout: any;
+  layout:  LayoutListsInterface;
 }
 const ColumnLayout = ({ layout }: ColumnLayoutInterface) => {
     const {selectedSetting, setSelectedSetting}=useSelectedSettingContext_();
-  const { setEmailTemplate } = useEmailTemplateContext_();
+  const {emailTemplate, setEmailTemplate } = useEmailTemplateContext_();
   const { dragElementLayout } = useDragDropLayoutElementContext_();
   const [dragOver, setDragOver] = useState<
     | {
@@ -37,14 +39,41 @@ const ColumnLayout = ({ layout }: ColumnLayoutInterface) => {
         }));
     setDragOver(undefined);
   };
+  const deleteLayout=(layout:LayoutListsInterface)=>{
+      const updateEmailTemplate=emailTemplate?.filter(item=>item?.id!==layout?.id);
+      setEmailTemplate(updateEmailTemplate);
+      setSelectedSetting({});
+  }
+  const moveItemUp=(layout:LayoutListsInterface)=>{
+      const index=emailTemplate.findIndex((item)=>item?.id===layout?.id);
+      if(index>0){
+         const updateItems=[...emailTemplate];
+         // Swap current item with above item
+          [updateItems[index],updateItems[index-1]]=[updateItems[index-1],updateItems[index]]
+          setEmailTemplate(updateItems);
+      }
+
+  }
+    const moveItemDown=(layout:LayoutListsInterface)=>{
+        const index=emailTemplate.findIndex((item)=>{
+            console.log(item?.id===layout?.id)
+            return item?.id===layout?.id
+        });
+        const updateItems=[...emailTemplate];
+        // Swap current item with above item
+        [updateItems[index],updateItems[index+1]]=[updateItems[index+1],updateItems[index]]
+        setEmailTemplate(updateItems);
+
+    }
   return (
-    <div>
+    <div className={'relative'}>
       <div
         style={{
           display: "grid",
           gridTemplateColumns: `repeat(${layout.numOfCol},1fr)`,
           gap: "0px",
         }}
+        className={`${selectedSetting?.layout?.id===layout?.id&&'border border-dashed border-blue-500'}`}
       >
         {Array.from({ length: layout.numOfCol }).map((_, index) => {
           return (
@@ -53,7 +82,7 @@ const ColumnLayout = ({ layout }: ColumnLayoutInterface) => {
               onClick={()=>{
                   setSelectedSetting({layout:layout,index:index})
               }}
-              className={`flex items-center 
+              className={`p-0 flex items-center py-2
               ${!layout?.[index]?.type && "bg-gray-100 border border-dashed"} justify-center 
               ${index === dragOver?.index && dragOver?.columId && "bg-green-100"} cursor-pointer
               ${(selectedSetting?.layout?.id===layout?.id&& selectedSetting?.index===index)&&'border-2 border-blue-500'}`}
@@ -62,11 +91,32 @@ const ColumnLayout = ({ layout }: ColumnLayoutInterface) => {
 
             >
                 {getElementComponent(layout?.[index] as ElementListInterface) ?? (
-                    <h2>Drag Element here</h2>
+                    <h2 className={'py-5'}>Drag Element here</h2>
                 )}
             </div>
           );
         })}
+          {
+              selectedSetting?.layout?.id===layout?.id&&
+              <div className={'absolute -right-12 flex gap-2 flex-col'}>
+                  <div
+                      className={'cursor-pointer rounded-full hover:shadow-md transition-all hover:scale-105 bg-purple-100 p-2'}
+                      onClick={() => moveItemUp(layout)}>
+                      <ArrowUp className={'text-red-600'}/>
+                  </div>
+                  <div
+                      className={'cursor-pointer rounded-full hover:shadow-md transition-all hover:scale-105 bg-purple-100 p-2'}
+                      onClick={() => deleteLayout(layout)}>
+                      <Trash className={'text-red-600'}/>
+                  </div>
+                  <div
+                      className={'cursor-pointer rounded-full hover:shadow-md transition-all hover:scale-105 bg-purple-100 p-2'}
+                      onClick={() => moveItemDown(layout)}>
+                      <ArrowDown className={'text-red-600'}/>
+                  </div>
+
+              </div>
+          }
       </div>
     </div>
   );

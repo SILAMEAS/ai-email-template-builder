@@ -25,11 +25,13 @@ const ComponentsRenderCss = ({KEY,value,onHandleChangeStyle,onHandleChangeOutSty
             />
         }
         case "textAlign":
+        case "justifyContent":
         case "textTransform":{
             const handleOptionToggleGroupField=()=>{
                 let option=[''];
                 switch (KEY){
-                    case 'textAlign':{
+                    case 'textAlign':
+                    case 'justifyContent':{
                         return  option=arrayTextAlignValue
                     }
                     case 'textTransform':{

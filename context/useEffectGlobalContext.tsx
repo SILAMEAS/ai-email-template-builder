@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect } from "react";
-import { EnumScreen } from "@/constants/EnumScreen";
-import { userDetailType } from "@/context/global/UserDetailContext";
-import { emailTemplateType } from "@/context/global/EmailTemplateContext";
-import { selectedSettingType } from "@/context/global/SelectedSettingContext";
+import React, {useEffect} from "react";
+import {EnumScreen} from "@/constants/EnumScreen";
+import {userDetailType} from "@/context/global/UserDetailContext";
+import {emailTemplateType} from "@/context/global/EmailTemplateContext";
+import {selectedSettingType} from "@/context/global/SelectedSettingContext";
 
 type useEffectGlobalContextType = {
   setUserDetail: React.Dispatch<React.SetStateAction<userDetailType>>;
@@ -46,7 +46,7 @@ const useEffectGlobalContext = ({
     if (selectedSetting) {
       let updateEmailTemplate = [];
       emailTemplate?.forEach((item) => {
-        if (item.id === selectedSetting?.layout?.id) {
+        if (item?.id === selectedSetting?.layout?.id) {
           updateEmailTemplate.push(selectedSetting?.layout);
         } else {
           updateEmailTemplate.push(item);

@@ -185,7 +185,7 @@ export const ElementLists:Array<ElementListInterface> = [
     },
     outerStyle: {
       display: "flex",
-      gap: 15,
+      gap: '15px',
     },
   },
 ];
