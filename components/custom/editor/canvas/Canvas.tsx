@@ -33,7 +33,7 @@ const Canvas = ({viewHTMLCode,closeDialog}:{viewHTMLCode:boolean,closeDialog: (o
   }
   React.useEffect(()=>{
     viewHTMLCode&&GetHTMLCode();
-  },[viewHTMLCode])
+  },[viewHTMLCode]);
   return (
     <div className={"flex justify-center mt-20"}>
       <div
@@ -44,7 +44,7 @@ const Canvas = ({viewHTMLCode,closeDialog}:{viewHTMLCode:boolean,closeDialog: (o
       >
         {emailTemplate && emailTemplate?.length > 0 ? (
           emailTemplate?.map((layout) => (
-            <div key={layout?.id+Date.now()}>
+            <div key={layout?.id}>
               {getLayoutComponent(layout as LayoutListsInterface)}
             </div>
           ))

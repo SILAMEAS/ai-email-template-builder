@@ -1,5 +1,5 @@
 export enum PropertyConstants {
-  column = "Column",
+  column = "column",
   button = "Button",
   text = "Text",
   image = "Image",

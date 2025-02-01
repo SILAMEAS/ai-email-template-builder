@@ -1,12 +1,6 @@
-import {
-  Columns2,
-  Columns3,
-  Columns4,
-  LucideProps,
-  RectangleHorizontal,
-} from "lucide-react";
-import { ForwardRefExoticComponent, RefAttributes } from "react";
-import { PropertyConstants } from "@/constants/PropertyConstants";
+import {Columns2, Columns3, Columns4, LucideProps, RectangleHorizontal,} from "lucide-react";
+import {ForwardRefExoticComponent, RefAttributes} from "react";
+import {PropertyConstants} from "@/constants/PropertyConstants";
 
 export interface LayoutListsInterface extends Record<string, any> {
   label: string;
@@ -18,29 +12,29 @@ export interface LayoutListsInterface extends Record<string, any> {
 }
 const LayoutLists: Array<LayoutListsInterface> = [
   {
-    label: "1 Column",
-    type: PropertyConstants.column,
+    label: 'Column',
+    type: 'column' as any,
     numOfCol: 1,
-    icon: RectangleHorizontal,
+    icon: RectangleHorizontal
   },
   {
-    label: "2 Column",
-    type: PropertyConstants.column,
+    label: '2 Column',
+    type: 'column'  as any,
     numOfCol: 2,
-    icon: Columns2,
+    icon: Columns2
   },
   {
-    label: "3 Column",
-    type: PropertyConstants.column,
+    label: '3 Column',
+    type: 'column'  as any,
     numOfCol: 3,
-    icon: Columns3,
+    icon: Columns3
   },
   {
-    label: "4 Column",
-    type: PropertyConstants.column,
+    label: '4 Column',
+    type: 'column'  as any,
     numOfCol: 4,
-    icon: Columns4,
-  },
+    icon: Columns4
+  }
 ];
 
 export default LayoutLists;
