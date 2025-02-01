@@ -9,7 +9,6 @@ import ImagePreviewField from "@/components/custom/editor/right-side/components/
 {/** ===================================================================================== **/}
 const RenderComponentCustomSetting = ({element,onHandleChange}:
                                             {element: ElementListInterface,onHandleChange: (fliedName: string, value: string) => void}) => {
-    element?.imageUrl&& console.log('element',element?.style)
     return <div>
         {element?.imageUrl!==undefined&& (
             <ImagePreviewField

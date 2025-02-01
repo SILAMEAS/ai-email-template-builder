@@ -56,7 +56,6 @@ const ColumnLayout = ({ layout }: ColumnLayoutInterface) => {
   }
     const moveItemDown=(layout:LayoutListsInterface)=>{
         const index=emailTemplate.findIndex((item)=>{
-            console.log(item?.id===layout?.id)
             return item?.id===layout?.id
         });
         const updateItems=[...emailTemplate];

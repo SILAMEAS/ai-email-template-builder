@@ -39,4 +39,17 @@ export const GetTemplateById=query({
         }
     }
 
+});
+export const GetAllTemplate=query({
+    args:{
+        email:v.string()
+    },
+    handler:async (ctx,args)=>{
+        try {
+            return await ctx.db.query('emailTemplate').filter((q)=>q.eq(q.field('email'),args.email)).collect();
+        }catch (e){
+            console.error("GetAllTemplate",e)
+        }
+    }
+
 })

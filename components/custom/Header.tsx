@@ -6,12 +6,14 @@ import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import {Route} from "@/constants/Route";
 import {UserDetailContext_} from "@/context/global/UserDetailContext";
+import {useRouter} from "next/navigation";
 
 const Header = () => {
     const {userDetail}=UserDetailContext_();
+    const router=useRouter();
     return (
         <div className={'flex justify-between items-center py-4 px-10 shadow-sm'}>
-           <Image src={"/logo.png"} alt={"logo"} width={130} height={100}/>
+           <Image src={"/logo.png"} alt={"logo"} width={130} height={100} onClick={()=>router.push("/")} className={'cursor-pointer'}/>
             <div>
                 {
                     userDetail?.email?

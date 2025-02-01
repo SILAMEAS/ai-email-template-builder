@@ -20,7 +20,6 @@ const Editor = () => {
     const GetTemplateData=async ()=>{
         setLoading(true);
         if(typeof templateId!=='string'){
-            console.log('templateId not string');
             setLoading(false);
             return;
         }

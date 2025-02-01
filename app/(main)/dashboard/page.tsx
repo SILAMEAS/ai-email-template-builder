@@ -12,7 +12,7 @@ const Dashboard = () => {
       <div className={"p-10 md:px-28 lg:px-40 xl:px-56 mt-16"}>
         <div className={"flex justify-between"}>
           <h2 className={"font-bold text-3xl"}>Hello, {userDetail?.name}</h2>
-          <Link href={`/editor/12`}>
+          <Link href={`/create`}>
             <Button>+ Create new email template</Button>
           </Link>
         </div>

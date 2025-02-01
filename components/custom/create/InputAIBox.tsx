@@ -34,15 +34,18 @@ const InputAIBox = () => {
             setLoading(false);
             router.push('/editor/'+tid);
         }catch (e){
-            console.error(e);
             setLoading(false);
         }
     }
     return (
         <div className={'mt-5 flex gap-y-5 flex-col'}>
             <LabelField label={`Provide details about the email template you'd like to create`}/>
-            <Textarea placeholder={'Start writing here'} rows={5} className={''} onChange={(e)=>setUserInput(e.target.value)}/>
-            <Button disabled={userInput===''||loading} onClick={OnGenerate}>{`${loading?"loading ..." : 'Generate Email Template'}`}</Button>
+            <Textarea placeholder={'Start writing here'} rows={5} className={''}
+                      onChange={(e) => setUserInput(e.target.value)}/>
+            <Button disabled={userInput === '' || loading}
+                    onClick={OnGenerate}>{`${loading ? "loading ..." : 'Generate Email Template'}`}</Button>
+            <p className={'text-sm text-gray-400'}><span className={'font-bold text-black'}>Example</span> : Generate
+                the Email template for Notify people with pricing model for website</p>
         </div>
     );
 };

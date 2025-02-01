@@ -87,10 +87,6 @@ const useOnChange = () => {
         // Update the state
         setSelectedSetting(updateData);
     };
-    React.useEffect(()=>{
-        // console.log('selectedSetting',selectedSetting);
-        // console.log('textarea',element?.textarea )
-    },[selectedSetting])
     return {element,selectedSetting,onHandleChange,onHandleChangeStyle,onHandleChangeOutStyle}
 };
 
